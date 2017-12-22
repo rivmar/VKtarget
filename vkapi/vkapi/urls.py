@@ -1,8 +1,8 @@
 
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^groups/', include('groups.urls', namespace='groups')),
+    url(r'^', include('groups.urls', namespace='groups')),
     url(r'^admin/', admin.site.urls),
 ]

@@ -1,0 +1,47 @@
+{% extends 'main.html' %}
+{% block title %}
+    <h1>Все пользовательские блоги</h1>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+            <table class="table table-striped">
+              <tbody>
+                {% for user in users %}
+                    <tr>
+                      <td>{{ user.user.get_full_name }}</td>
+                        <td><a href="{% url 'blogs:records' user.id %}">{{ user.blog_name }}</a></td>
+                      <td>
+                          {% if request.user.id and request.user.id != user.id %}
+                            <button id="{{ user.id }}" class="btn
+                            {% if user in request.user.users.subscribes.all %}
+                                btn-outline-warning">&nbsp;Отписаться&nbsp;
+                            {% else %}
+                                btn-outline-info">Подписаться
+                            {% endif %}
+                            </button>
+                          {% endif %}
+                      </td>
+                    </tr>
+               {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+<script type="application/javascript">
+    $("button").click(function(){
+        id = $(this).attr('id');
+        $.ajax({
+            url: '{% url "users:blogs" %}' + id + '/subscribe/',
+            type: 'GET',
+            success: function(data){
+                location.reload();
+            }
+        })
+    });
+</script>
+{% endblock %}

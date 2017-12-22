@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+{% block title %}
+    <h1>Авторизация</h1>
+{% endblock %}
+{% block content %}
+    <div class="container justify-content-center">
+        {% if form.errors %}
+            <div class="form-error">Упс... что-то пошло не так. Попробуйте еще раз!</div>
+        {% endif %}
+          <form method="post" class="form-signin">
+              {% csrf_token %}
+               <h2 class="form-signin-heading">Вход в систему</h2>
+               <label for="id_username" class="">Ваш логин</label>
+               <input id="id_username" class="form-control" placeholder="Логин" name="username" autofocus>
+               <label for="id_password" class="">Пароль</label>
+               <input type="password" id="id_password" class="form-control" placeholder="Пароль" name="password">
+               <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+          </form>
+    </div> <!-- /container -->
+{% endblock %}

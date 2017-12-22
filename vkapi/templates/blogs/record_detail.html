@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+{% block title %}
+    <h1>{{ record.creator.blog_name }}</h1>
+    <em>{{ record.creator.get_full_name }}</em>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <h2>{{ record.title }}</h2>
+            <div style="margin-bottom: 20px"></div>
+            <p>{{ record.body|safe}}</p>
+            <div class="row" style="margin-bottom: 50px">
+                <div class="col-5">
+                    <em>Добавлена: {{ record.created|date:"d/m/Y" }}</em>
+                    <a href="{% url 'blogs:records' record.creator.id %}">{{ record.creator.user.get_full_name }}</a>
+                </div>
+            </div>
+            {% if record.creator in request.user.users.subscribes.all and record.id not in request.user.users.get_viewed_ids %}
+                <button id="mark" class="btn btn-outline-info">Пометить прочитанной</button>
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+{% endblock %}
+{% block scripts %}
+<script type="application/javascript">
+    $("#mark").click(function(){
+            $.ajax({
+                url: '{% url "users:mark_viewed" record.id %}',
+                type: 'GET',
+                success: function(data){
+                    location.reload();
+                }
+            })
+        });
+</script>
+{% endblock %}

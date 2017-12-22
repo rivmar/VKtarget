@@ -54,7 +54,7 @@ ROOT_URLCONF = 'vkapi.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR + '/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -62,6 +62,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media'
             ],
         },
     },
@@ -99,6 +100,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_URL = '/admin/login/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
@@ -113,13 +115,14 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.10/howto/static-files/
-
 STATIC_URL = '/static/'
 
-VK_ACCESS_TOKEN = 'ea8a64a8e35b21722bcac60592ba9081e1bd667964f085c1e8918bc9e947b5d58bd4fce721cc490c607fe'
+STATICFILES_DIRS = ( os.path.join('static'), )
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'upload')
+MEDIA_URL = '/upload/'
+
+VK_ACCESS_TOKEN = '7c7a4d324fd5a80c5c49e14891887ad1f281a9942a929f39f71a81a39dd968f7dcdc5c7e32b6afef3f989'
 
 VK_BASE_URL = 'https://api.vk.com/method/{}'
 

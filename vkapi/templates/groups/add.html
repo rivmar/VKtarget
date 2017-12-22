@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% block title %}
+    <h1>{{ title }}</h1>
+{% endblock %}
+{% block content %}
+    <div class="container justify-content-center">
+        {% if form.errors %}
+            <div class="form-error">Упс... что-то пошло не так. Попробуйте еще раз!</div>
+        {% endif %}
+          <form method="post" enctype="multipart/form-data" class="group-form">
+              {% csrf_token %}
+              {% if create %}
+               <label for="id_name" class="">Название группы</label>
+               <input id="id_name" class="form-control" placeholder="Название" name="name" autofocus>
+              {% else %}
+              <h2>{{ name }}</h2>
+              {% endif %}
+               <label for="id_file" class="">Файл с данными пользователей</label>
+               <input type="file" id="id_file" class="form-control" name="file">
+               <button class="btn btn-lg btn-primary btn-block" type="submit">Создать</button>
+          </form>
+    </div> <!-- /container -->
+{% endblock %}

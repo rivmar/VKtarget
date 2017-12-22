@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+{% block title %}
+    <h1>Группы</h1>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                <thead>
+                    <th>#</th>
+                    <th>Название</th>
+                    <th>Обновить пользователей</th>
+                </thead>
+                <tbody>
+                    {% for group in groups %}
+                        <tr>
+                            <td>{{ group.id }}</td>
+                            <td>{{ group.name }}</td>
+                            <td>{{ group.audience_count }}</td>
+                            <td>
+                                <a class="btn btn-outline-primary" href="{% url 'groups:group' group.id %}">
+                                    Изменить список
+                                </a>
+                            </td>
+                        </tr>
+                   {% endfor %}
+                </tbody>
+            </table>
+            </div>
+            <a class="btn btn-outline-info" href="{% url 'groups:group' %}">Создать группу</a>
+        </div>
+    </div>
+{% endblock %}
