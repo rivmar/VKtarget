@@ -118,3 +118,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+VK_ACCESS_TOKEN = 'ea8a64a8e35b21722bcac60592ba9081e1bd667964f085c1e8918bc9e947b5d58bd4fce721cc490c607fe'
+
+VK_BASE_URL = 'https://api.vk.com/method/{}'
+
+VK_ACCOUNT_ID = 1604431385
