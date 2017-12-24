@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+{% block title %}
+    <h1>Файлы</h1>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                <tbody>
+                    {% for file in files %}
+                        <tr>
+                            <td><a href="/upload/{{ file }}" target="_blank">{{ file }}</td>
+                        </tr>
+                   {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

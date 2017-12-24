@@ -1,8 +1,5 @@
 import requests
 from django.conf import settings
-import pprint
-
-pp = pprint.PrettyPrinter(indent=4)
 
 class VKads:
     def __init__(self):
@@ -24,10 +21,8 @@ class VKads:
         return group.json()['response']['id']
 
     def import_target_contacts(self, group_id, contacts):
-        print(group_id)
         method = 'ads.importTargetContacts'
         self.params['target_group_id'] = group_id
         self.params['contacts'] = contacts
         group = requests.get(self.url.format(method), params=self.params)
-        pp.pprint(group.json())
         return group.json()

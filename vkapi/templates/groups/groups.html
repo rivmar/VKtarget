@@ -10,7 +10,9 @@
                 <thead>
                     <th>#</th>
                     <th>Название</th>
+                    <th>Число пользователей</th>
                     <th>Обновить пользователей</th>
+                    <th>Посмотреть файлы</th>
                 </thead>
                 <tbody>
                     {% for group in groups %}
@@ -23,12 +25,17 @@
                                     Изменить список
                                 </a>
                             </td>
+                            <td>
+                                <a class="btn btn-outline-info" href="{% url 'groups:files' group.id %}">
+                                    Посмотреть файлы
+                                </a>
+                            </td>
                         </tr>
                    {% endfor %}
                 </tbody>
             </table>
             </div>
-            <a class="btn btn-outline-info" href="{% url 'groups:group' %}">Создать группу</a>
+            <a class="btn btn-outline-warning" href="{% url 'groups:group' %}">Создать группу</a>
         </div>
     </div>
 {% endblock %}
