@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+{% block title %}
+    <h1>Получение токена</h1>
+{% endblock %}
+{% block content %}
+    <div class="container justify-content-center">
+        {% if form.errors %}
+            <div class="form-error">Упс... что-то пошло не так. Попробуйте еще раз!</div>
+        {% endif %}
+          <form method="post" class="group-form">
+              {% csrf_token %}
+              {{ form }}
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Отправить</button>
+          </form>
+    </div> <!-- /container -->
+{% endblock %}

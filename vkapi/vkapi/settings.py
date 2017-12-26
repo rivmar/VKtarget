@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'groups'
 ]
 
 MIDDLEWARE = [
@@ -102,6 +103,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LOGIN_URL = '/admin/login/'
 
+LOGIN_REDIRECT_URL = '/auth/'
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
@@ -122,8 +125,10 @@ STATICFILES_DIRS = ( os.path.join('static'), )
 MEDIA_ROOT = os.path.join(BASE_DIR,'upload')
 MEDIA_URL = '/upload/'
 
-VK_ACCESS_TOKEN = '7c7a4d324fd5a80c5c49e14891887ad1f281a9942a929f39f71a81a39dd968f7dcdc5c7e32b6afef3f989'
-
 VK_BASE_URL = 'https://api.vk.com/method/{}'
 
-VK_ACCOUNT_ID = 1604431385
+VK_AUTH_URL = 'https://oauth.vk.com/authorize?client_id={}&display=page&redirect_uri={}/token/&callback&scope=ads,offline&response_type=code&v=5.69'
+VK_TOKEN_URL = 'https://oauth.vk.com/access_token'
+
+
+

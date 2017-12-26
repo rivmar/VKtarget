@@ -2,11 +2,11 @@ import requests
 from django.conf import settings
 
 class VKads:
-    def __init__(self):
+    def __init__(self, user):
         self.url = settings.VK_BASE_URL
         self.params = {
-            'access_token':settings.VK_ACCESS_TOKEN,
-            'account_id': settings.VK_ACCOUNT_ID
+            'access_token':user.credentials.token,
+            'account_id': user.credentials.account_id
         }
 
     def get_target_groups(self):
